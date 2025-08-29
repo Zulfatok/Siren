@@ -13,6 +13,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Langkah ini kita tambahkan kembali untuk memastikan
+      # cargo dan rustc tersedia untuk wrangler
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      
+      # Sekarang, wrangler-action akan melihat Rust sudah ada
+      # dan akan menjalankan build sebelum deploy
       - name: Publish
         uses: cloudflare/wrangler-action@v3
         with:
