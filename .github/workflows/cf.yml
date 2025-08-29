@@ -13,7 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # LANGKAH BARU DITAMBAHKAN DI SINI
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y libssl-dev pkg-config
       
@@ -21,10 +20,11 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          target: wasm32-unknown-unknown # <-- TAMBAHKAN BARIS INI
           override: true
       
       - name: Publish
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDEFLARE_API_TOKEN }} # PASTIKAN NAMA SECRET INI BENAR
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           wranglerVersion: '4.33.1'
