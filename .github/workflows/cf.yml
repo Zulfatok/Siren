@@ -1,22 +1,27 @@
-name: cf workers
+name: Deploy Worker
 
 on:
-  workflow_dispatch:
-
   push:
     branches:
-      - master
-    paths-ignore:
-      - 'README.md'
-      - 'LICENSE.md'
+      - master  # Diperbaiki dari 'main' menjadi 'master'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: cf
+    name: Deploy
     steps:
-      - uses: actions/checkout@v4
-      - name: deploy
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # INI ADALAH LANGKAH PENTING YANG HILANG
+      # Langkah ini akan menginstal Rust dan Cargo di lingkungan build
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      
+      - name: Publish
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
