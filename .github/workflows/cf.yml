@@ -12,23 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y libssl-dev pkg-config
       
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-          override: true
-
-      # LANGKAH BARU DITAMBAHKAN UNTUK MENGINSTALL WASM-PACK
-      - name: Install wasm-pack
-        run: cargo install wasm-pack
-
       - name: Publish
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          wranglerVersion: '4.33.1'
+          wranglerVersion: '4' # Versi mayor sudah cukup
