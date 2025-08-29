@@ -1,5 +1,5 @@
 name = "siren"
-main = "src/lib.rs" # <-- Cara modern: Langsung tunjuk ke file Rust utama Anda
+main = "src/lib.rs" # <-- Langsung tunjuk ke file Rust utama Anda
 compatibility_date = "2024-05-23"
 compatibility_flags = ["sockets_connect"] # <-- Flag modern untuk sockets
 
