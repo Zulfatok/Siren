@@ -32,3 +32,7 @@ opt-level = "s"
 lto = true
 strip = true
 codegen-units = 1
+
+# --- TAMBAHKAN TIGA BARIS DI BAWAH INI ---
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
