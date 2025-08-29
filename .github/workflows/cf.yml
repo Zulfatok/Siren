@@ -1,14 +1,9 @@
 name: cf workers
-
 on:
   workflow_dispatch:
-
   push:
-    branches:
-      - master
-    paths-ignore:
-      - 'README.md'
-      - 'LICENSE.md'
+    branches: [ master ]
+    paths-ignore: [ 'README.md', 'LICENSE.md' ]
 
 jobs:
   deploy:
