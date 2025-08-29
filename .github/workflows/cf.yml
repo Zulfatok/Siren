@@ -3,7 +3,7 @@ name: Deploy Worker
 on:
   push:
     branches:
-      - master  # Diperbaiki dari 'main' menjadi 'master'
+      - master
 
 jobs:
   deploy:
@@ -13,14 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # INI ADALAH LANGKAH PENTING YANG HILANG
-      # Langkah ini akan menginstal Rust dan Cargo di lingkungan build
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-      
       - name: Publish
         uses: cloudflare/wrangler-action@v3
         with:
