@@ -1,16 +1,13 @@
 name = "siren"
-main = "target/wasm32-unknown-unknown/release/siren.wasm" # <-- DIUBAH: Path output build yang benar
+main = "dist/index.js" # <-- DIUBAH: Pintu masuk sekarang adalah file .js
 compatibility_date = "2024-05-23"
-
-# Bagian "type = rust" DIHAPUS
 
 [[kv_namespaces]]
 binding = "SIREN"
 id = "9d05b7b01b374d619d5f8ff372889c3b"
 
-# DITAMBAHKAN KEMBALI dengan perintah modern
 [build]
-command = "cargo build --target wasm32-unknown-unknown --release"
+command = "wasm-pack build --target bundler --out-dir dist --out-name index"
 
 [vars]
 UUID = "7cc46205-67d7-45ca-8a00-619d7320bc14"
