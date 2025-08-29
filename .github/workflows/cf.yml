@@ -13,6 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # LANGKAH BARU DITAMBAHKAN DI SINI
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libssl-dev pkg-config
+      
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -22,5 +26,5 @@ jobs:
       - name: Publish
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          wranglerVersion: '4.33.1' # <-- DIUBAH DARI '4' MENJADI VERSI SPESIFIK
+          apiToken: ${{ secrets.CLOUDEFLARE_API_TOKEN }} # PASTIKAN NAMA SECRET INI BENAR
+          wranglerVersion: '4.33.1'
